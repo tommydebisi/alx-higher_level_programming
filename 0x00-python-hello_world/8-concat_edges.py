@@ -1,5 +1,5 @@
 #!/usr/bin/python3
 str = "Python is an interpreted, interactive, object-oriented programming\
  language that combines remarkable power with very clear syntax"
-print(str[str.find('object'):str.find('that')], end="")
-print(str[str.find('with'): str.find("very")] + str[:6])
+
+print(str[39:76] + str[107:112] + str[:6])
