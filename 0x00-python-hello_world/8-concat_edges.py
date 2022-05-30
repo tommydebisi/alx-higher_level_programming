@@ -1,5 +1,5 @@
 #!/usr/bin/python3
 str = "Python is an interpreted, interactive, object-oriented programming\
  language that combines remarkable power with very clear syntax"
-str = str[39:67] + "with Python"
-print(str)
+print(str[39:67], end="")
+print(str[str.find("with"):(str.find("with") + 4)] + str[6:7] + str[:6])

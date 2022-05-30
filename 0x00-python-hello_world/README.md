@@ -1,2 +1,1 @@
-# BEGINNING OF FIRST USE OF PYTHON
-> Documentation loading...
+# FIRST USE OF PYTHON
