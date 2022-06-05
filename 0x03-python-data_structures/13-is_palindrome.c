@@ -22,7 +22,7 @@ int is_palindrome(listint_t **head)
 		mid_node = mid_node->next;
 
 	new_begin = reverse_listint(&mid_node);	/* reverse the node */
-	if (num_nodes % 2 != 0)
+	if (num_nodes % 2 != 0)	/* check if node is odd */
 		half -= 1;
 
 	for (i = 0; i < half; i++)	/* traverse start node with reversed start */
@@ -56,8 +56,6 @@ int list_len(const listint_t *head)
 
 	return (n);
 }
-
-#include "lists.h"
 
 /**
  * reverse_listint - reverse the lists
