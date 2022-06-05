@@ -12,12 +12,9 @@ int is_palindrome(listint_t **head)
 	listint_t *mid_node, *start, *new_begin;
 
 	if (!head || !*head)
-		return (0);
+		return (1);
 
 	num_nodes = list_len(*head);
-	if (num_nodes == 1)
-		return (0);
-
 	half = num_nodes % 2 == 0 ? (num_nodes / 2) : (num_nodes / 2) + 1;
 	mid_node = start = *head;
 
