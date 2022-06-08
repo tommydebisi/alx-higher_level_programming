@@ -12,6 +12,10 @@ def best_score(a_dictionary):
     """
     if not a_dictionary:
         return None
+
+    if len(a_dictionary) == 1:
+        return list(a_dictionary.keys())[0]  # Typecoast to access key
+
     high_score = list(a_dictionary.values())[0]  # Typecast to access value
     for key, value in a_dictionary.items():
         if high_score < value:
