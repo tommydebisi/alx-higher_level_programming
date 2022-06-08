@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-from nis import match
-
-
 def roman_to_int(roman_string):
     """
     Converts roman numeral to integer
