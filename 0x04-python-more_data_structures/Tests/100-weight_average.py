@@ -10,7 +10,7 @@ def weight_average(my_list=[]):
         average of all integer tuples
     """
     if not my_list:
-        return None
+        return 0
     denominator = 0
     new_list = []
     for first, second in my_list:

@@ -10,7 +10,7 @@ def best_score(a_dictionary):
         key with biggest integer value or none
         if score is not found
     """
-    if not a_dictionary:
+    if not a_dictionary or not a_dictionary.values():
         return None
     high_score = list(a_dictionary.values())[0]  # Typecast to access value
     for key, value in a_dictionary.items():
