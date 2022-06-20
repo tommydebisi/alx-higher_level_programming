@@ -10,11 +10,12 @@ def safe_print_list(my_list=[], x=0):
     Return:
         number of elements to print
     """
-    try:
-        for iter in range(x):
+    iter = 0
+    while iter < x:
+        try:
             print(my_list[iter], end='')
-        print()
-        return iter + 1
-    except IndexError:
-        print()
-        return iter
+            iter += 1
+        except IndexError:
+            break
+    print()
+    return iter
