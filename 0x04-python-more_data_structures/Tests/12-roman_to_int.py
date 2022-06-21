@@ -24,7 +24,7 @@ def roman_to_int(roman_string):
     }
     numerals = list(map(lambda x: roman_nums.get(x), roman_string))
     result = 0
-    for i, value in enumerate(numerals):
+    for i, value in enumerate(numerals):    #  loop list and add values
         if i <= len(numerals) - 2 and value < numerals[i + 1]:
             result -= value
         else:
