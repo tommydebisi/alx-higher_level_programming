@@ -57,15 +57,13 @@ class Square:
         else:
             integer = 0
             pos1, pos2 = self.__position
+            for new_line in range(pos2):
+                print()
             while integer < self.__size:
+
                 j = 0
                 while j < pos1:
-                    if pos2 == 0:
-                        print(" ", end='')
-                    elif pos2 != 0:
-                        if j == pos2:
-                            break
-                        print(" ", end='')  # replace position with space
+                    print(" ", end='')  # replace position with space
                     j += 1
 
                 number = 0
