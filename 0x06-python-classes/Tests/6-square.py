@@ -57,10 +57,11 @@ class Square:
                 j = 0
                 while j < pos1:
                     if pos2 == 0:
-                        pass
-                    elif pos2 == j and pos2 != 0:
-                        break
-                    print(" ", end='')  # Get replace position with space
+                        print(" ", end='')
+                    elif pos2 != 0:
+                        if j == pos2:
+                            break
+                        print(" ", end='')  # Get replace position with space
                     j += 1
 
                 number = 0
