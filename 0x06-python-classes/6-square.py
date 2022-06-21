@@ -37,7 +37,7 @@ class Square:
 
     @position.setter
     def position(self, value):
-        if value[0] < 0 or value[1] < 0:
+        if type(value) is not tuple or (value[0] < 0 or value[1] < 0):
             raise TypeError("position must be a tuple of 2 positive integers")
         else:
             self.__position = value
@@ -61,7 +61,7 @@ class Square:
                     elif pos2 != 0:
                         if j == pos2:
                             break
-                        print(" ", end='')  # Get replace position with space
+                        print(" ", end='')  # replace position with space
                     j += 1
 
                 number = 0
