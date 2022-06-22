@@ -6,7 +6,7 @@ import math
 class MagicClass:
     """ Declares a class named MagicClass """
 
-    def __init__(self, radius) -> None:
+    def __init__(self, radius=0) -> None:
         """
         Intializes the instance variables
 
