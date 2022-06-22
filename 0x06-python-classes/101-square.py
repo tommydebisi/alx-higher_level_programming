@@ -46,7 +46,6 @@ class Square:
         else:
             self.__position = value     # tuple contains 2 positive integers
 
-
     def __str__(self):
         """ Prints in stdout the square with the character # """
         output = list()
@@ -80,13 +79,19 @@ class Square:
         else:
             integer = 0
             pos1, pos2 = self.__position
-            print("\n" * pos2, end='')
-    
+            for new_line in range(pos2):
+                print()
             while integer < self.__size:
-                print(" " * pos1, end='')  # replace position with space
+
+                j = 0
+                while j < pos1:
+                    print(" ", end='')  # replace position with space
+                    j += 1
+
                 number = 0
                 while number < self.__size:
                     print("{}".format("#"), end='')
                     number += 1
                 print()
                 integer += 1
+
