@@ -46,6 +46,28 @@ class Square:
         else:
             self.__position = value     # tuple contains 2 positive integers
 
+    def __str__(self):
+        """ Prints in stdout the square with the character # """
+        output = list()
+        if self.__size == 0:
+            return ""   # return empty line, so print will give new_line
+        else:
+            integer = 0
+            pos1, pos2 = self.__position
+
+            output.append("\n" * pos2)
+
+            while integer < self.__size:
+                output.append(" " * pos1)  # replace position with space
+                number = 0
+                while number < self.__size:
+                    output.append("#")
+                    number += 1
+                if integer + 1 != self.__size:
+                    output.append("\n")
+                integer += 1
+            return "".join(output)
+
     def area(self):
         """ Computes area of a square """
         return self.__size ** 2
@@ -58,7 +80,7 @@ class Square:
             integer = 0
             pos1, pos2 = self.__position
             print("\n" * pos2, end='')
-    
+
             while integer < self.__size:
                 print(" " * pos1, end='')  # replace position with space
                 number = 0
