@@ -60,7 +60,7 @@ class Square:
         Args:
             other: other object instance
         """
-        return self.area() >= other.area()
+        return self.area() > other.area()
 
     def __ge__(self, other) -> bool:
         """
