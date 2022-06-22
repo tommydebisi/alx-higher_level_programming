@@ -50,7 +50,7 @@ class Square:
         """ Prints in stdout the square with the character # """
         output = list()
         if self.__size == 0:
-            return "\n"
+            return ""   # return empty line, so print will give new_line
         else:
             integer = 0
             pos1, pos2 = self.__position
@@ -79,15 +79,10 @@ class Square:
         else:
             integer = 0
             pos1, pos2 = self.__position
-            for new_line in range(pos2):
-                print()
+            print("\n" * pos2, end='')
+
             while integer < self.__size:
-
-                j = 0
-                while j < pos1:
-                    print(" ", end='')  # replace position with space
-                    j += 1
-
+                print(" " * pos1, end='')  # replace position with space
                 number = 0
                 while number < self.__size:
                     print("{}".format("#"), end='')
