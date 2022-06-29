@@ -59,7 +59,7 @@ def matrix_mul(m_a, m_b):
         flag = 0
         inner_list = list()
         for row_b in range(len(m_b)):
-            for col in range(len(m_b[row_a])):
+            for col in range(len(m_b[row_b])):
                 if flag == 0:
                     inner_list.append(m_a[row_a][row_b] * m_b[row_b][col])
                 else:
