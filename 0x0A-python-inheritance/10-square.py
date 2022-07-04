@@ -33,8 +33,6 @@ class BaseGeometry:
         if value <= 0:
             raise ValueError("{} must be greater than 0".format(name))
 
-        return value    # validation complete
-
 
 class Rectangle(BaseGeometry):
     """
@@ -49,8 +47,10 @@ class Rectangle(BaseGeometry):
                 width: breadth of a rectangle
                 height: length of a rectangle
         """
-        self.__width = self.integer_validator("width", width)
-        self.__height = self.integer_validator("height", height)
+        self.integer_validator("width", width)
+        self.__width = width
+        self.integer_validator("height", height)
+        self.__height = height
 
     def __str__(self):
         """
@@ -80,5 +80,6 @@ class Square(Rectangle):
             Args:
                 size: size of square
         """
-        self.__size = self.integer_validator("size", size)
+        self.integer_validator("size", size)
+        self.__size = size
         super().__init__(self.__size, self.__size)  # init parent with size
