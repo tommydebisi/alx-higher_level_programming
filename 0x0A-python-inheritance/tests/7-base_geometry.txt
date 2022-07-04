@@ -1,0 +1,38 @@
+From the 7-base_geometry Module
+=========================
+
+Using the integer validator method
+=============================
+
+::
+
+First Import BaseGeometry class from Module
+
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+Begin tests
+
+::
+
+Test for validation:
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("name", "John")
+    Traceback (most recent call last):
+        ...
+    TypeError: name must be an integer
+
+    >>> bg.integer_validator("name", [10, 20])
+    Traceback (most recent call last):
+        ...
+    TypeError: name must be an integer
+
+    >>> bg.integer_validator("gold", 0)
+    Traceback (most recent call last):
+        ...
+    ValueError: gold must be greater than 0
+
+::
+
+END.
+====
