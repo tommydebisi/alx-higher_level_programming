@@ -1,0 +1,40 @@
+From the 1-my-list Module
+=========================
+
+Using the print_sorted method
+=============================
+
+::
+
+First Import MyList from the Module
+    >>> MyList = __import__('1-my_list').MyList
+
+Now begin tests
+::
+
+Test for sorting integers:
+    >>> my_list = MyList()
+    >>> my_list.append(5)
+    >>> my_list.append(2)
+    >>> my_list.append(6)
+    >>> my_list.append(1)
+    >>> my_list.append(4)
+    >>> my_list.print_sorted()
+    [1, 2, 4, 5, 6]
+
+::
+
+Test for more than one double integers:
+    >>> my_list = MyList()
+    >>> my_list.append(1)
+    >>> my_list.append(2)
+    >>> my_list.append(3)
+    >>> my_list.append(2)
+    >>> my_list.append(1)
+    >>> my_list.print_sorted()
+    [1, 1, 2, 2, 3]
+
+::
+
+END.
+====
