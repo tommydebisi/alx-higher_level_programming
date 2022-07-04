@@ -35,6 +35,7 @@ class BaseGeometry:
 
         return value    # validation complete
 
+
 class Rectangle(BaseGeometry):
     """
         Rectangle class
@@ -65,6 +66,7 @@ class Rectangle(BaseGeometry):
             Gets the area of a rectangle
         """
         return self.__width * self.__height
+
 
 class Square(Rectangle):
     """
