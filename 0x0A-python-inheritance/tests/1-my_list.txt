@@ -1,40 +1,67 @@
-From the 1-my-list Module
-=========================
+The ``1-my_list`` module
+=================================
 
-Using the print_sorted method
-=============================
+Testing ``MyList`` class
+-----------------------------------
 
-::
-
-First Import MyList from the Module
+[*] Import function from the module
     >>> MyList = __import__('1-my_list').MyList
 
-Now begin tests
-::
+[*] Module and function should have a doc
+    >>> len(__import__('1-my_list').__doc__) > 0
+    True
+    >>> len(MyList.__doc__) > 0
+    True
 
-Test for sorting integers:
+[*] Define a `MyList` object
     >>> my_list = MyList()
-    >>> my_list.append(5)
-    >>> my_list.append(2)
-    >>> my_list.append(6)
     >>> my_list.append(1)
     >>> my_list.append(4)
-    >>> my_list.print_sorted()
-    [1, 2, 4, 5, 6]
-
-::
-
-Test for more than one double integers:
-    >>> my_list = MyList()
-    >>> my_list.append(1)
     >>> my_list.append(2)
     >>> my_list.append(3)
-    >>> my_list.append(2)
-    >>> my_list.append(1)
+    >>> my_list.append(5)
+
+[*] Usage `print_sorted` function
     >>> my_list.print_sorted()
-    [1, 1, 2, 2, 3]
+    [1, 2, 3, 4, 5]
 
-::
+[*] Type check for `print_sorted` function
+- Passing in one argument
+    >>> my_list.print_sorted(2)
+    Traceback (most recent call last):
+        ...
+    TypeError: print_sorted() takes 1 positional argument but 2 were given
 
-END.
-====
+- Passing in two arguments
+    >>> my_list.print_sorted(1, 2)
+    Traceback (most recent call last):
+        ...
+    TypeError: print_sorted() takes 1 positional argument but 3 were given
+
+
+[*] MyList should work list a list
+- Using the `extends` method
+    >>> my_list.extend([6, 7])
+    >>> print(my_list)
+    [1, 4, 2, 3, 5, 6, 7]
+
+- Using the `pop` method
+    >>> print(my_list.pop())
+    7
+    >>> print(my_list)
+    [1, 4, 2, 3, 5, 6]
+
+- Create a list from a list
+    >>> my_list = MyList([1, 2, 3])
+    >>> print(my_list)
+    [1, 2, 3]
+
+- Create a list from a tuple
+    >>> my_list = MyList((1, 2, 3))
+    >>> print(my_list)
+    [1, 2, 3]
+
+- Create a list from a string
+    >>> my_list = MyList("Betty")
+    >>> print(my_list)
+    ['B', 'e', 't', 't', 'y']
