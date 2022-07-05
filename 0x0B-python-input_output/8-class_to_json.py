@@ -2,7 +2,6 @@
 """
     8-class_to_json Module
 """
-import json as js
 
 
 def class_to_json(obj):
@@ -13,5 +12,6 @@ def class_to_json(obj):
         Args:
             obj: initial object
     """
-    settle = js.dumps(obj.__dict__)
-    return js.loads(settle)
+    if hasattr(obj, '__dict__'):
+        return obj.__dict__.copy()
+    return {}
