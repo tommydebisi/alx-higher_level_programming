@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    9-student Module
+    10-student Module
 """
 
 

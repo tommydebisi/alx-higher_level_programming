@@ -14,7 +14,7 @@ def append_after(filename="", search_string="", new_string=""):
             search_string: string to append after
             new_string: string to be appended
     """
-    with open(filename, 'r+', encoding='utf-8') as file:
+    with open(filename, 'r+', encoding='utf-8') as file:    # read and write
         new_list = []
         for sentence in file:
             new_list.append(sentence)

@@ -26,7 +26,7 @@ def pascal_triangle(n):
 
         new_sub_list = []
         for i in range(len(checker)):
-            if i + 1 != len(checker):
+            if i + 1 != len(checker):   # prevent checking wrong index
                 new_sub_list.append(checker[i] + checker[i + 1])
         res_list.append(new_sub_list)
         sub_list = new_sub_list
