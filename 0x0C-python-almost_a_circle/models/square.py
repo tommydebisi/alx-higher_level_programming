@@ -80,18 +80,10 @@ class Square(Rectangle):
             returns the dictionary representation of a Square
         """
         to_dic = dict()
-        size_dic = dict()
-        attr_names = ['size', 'id', 'x', 'y']
-        i = 0
-        for num, val in enumerate(self.__dict__.values()):
-            if num == 2 or num == 3:
-                continue
-            if num == 1:
-                size_dic[attr_names[i]] = val
-                i += 1
-                continue
-            to_dic[attr_names[i]] = val
-            i += 1
-        size_dic.update(to_dic)
 
-        return size_dic
+        to_dic['size'] = self.size
+        to_dic['id'] = self.id
+        to_dic['x'] = self.x
+        to_dic['y'] = self.y
+
+        return to_dic
