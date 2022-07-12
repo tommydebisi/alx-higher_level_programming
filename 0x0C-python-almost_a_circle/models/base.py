@@ -91,7 +91,10 @@ class Base:
                 an instance with all attributes already set
         """
         # create a dummy instance
-        dum_obj = cls(2, 5)
+        if cls.__name__ == "Square":
+            dum_obj = cls(2)
+        else:
+            dum_obj = cls(2, 5)
 
         # update dummy instance with dictionary given
         dum_obj.update(**dictionary)
