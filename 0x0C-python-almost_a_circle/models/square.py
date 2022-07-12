@@ -20,8 +20,8 @@ class Square(Rectangle):
                 y: coordinate y
                 id: number of objects created
         """
+        super().__init__(size, size, x, y, id)
         self.size = size
-        super().__init__(self.size, self.size, x, y, id)
 
     def __str__(self) -> str:
         """
@@ -52,6 +52,9 @@ class Square(Rectangle):
         self.__size = value
 
     def update(self, *args, **kwargs):
+        """
+            updates the square instance
+        """
         i = 0
         if len(args) != 0:
             if len(args) == 1:  # only one arg to set
