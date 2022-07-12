@@ -91,7 +91,7 @@ class Base:
                 an instance with all attributes already set
         """
         # create a dummy instance
-        dum_obj = cls(2, 5, 1)
+        dum_obj = cls(2, 5)
 
         # update dummy instance with dictionary given
         dum_obj.update(**dictionary)
