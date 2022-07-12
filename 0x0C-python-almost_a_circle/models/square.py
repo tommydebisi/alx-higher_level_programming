@@ -21,7 +21,6 @@ class Square(Rectangle):
                 id: number of objects created
         """
         super().__init__(size, size, x, y, id)
-        self.size = size
 
     def __str__(self) -> str:
         """
@@ -31,7 +30,7 @@ class Square(Rectangle):
                 string representation of object
         """
         line = '[{}] ({}) {}/{} - {}'
-        idd, xx, yy, si = self.id, self.x, self.y, self.__size
+        idd, xx, yy, si = self.id, self.x, self.y, self.size
 
         return line.format(self.__class__.__name__, idd, xx, yy, si)
 
@@ -60,11 +59,13 @@ class Square(Rectangle):
 
             for num, key in enumerate(self.__dict__.keys()):
                 try:
-                    if num == 0:
-                        self.__dict__[key] = args[1]
+                    if num == 1:
+                        self.__dict__[key] = args[i]
                         continue
-                    if num == 3:
-                        i -= 1
+                    elif num == 2:
+                        self.__dict__[key] = args[i]
+                        i += 1
+                        continue
 
                     self.__dict__[key] = args[i]
                     i += 1
