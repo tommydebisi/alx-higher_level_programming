@@ -4,7 +4,6 @@
 """
 import unittest
 from models import square
-import json
 import inspect
 import pep8
 Square = square.Square
@@ -52,6 +51,8 @@ class TestSquare(unittest.TestCase):
             Square('2')
         with self.assertRaises(TypeError):
             Square((2, 2))
+
+    def test_size_setter_for_neg(self):
         with self.assertRaises(ValueError):
             Square(-2)
 
