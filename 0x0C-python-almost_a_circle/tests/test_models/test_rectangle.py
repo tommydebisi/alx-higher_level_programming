@@ -6,8 +6,6 @@ Test cases for Rectangle class
 from models import rectangle
 import unittest
 import json
-import inspect
-import pep8
 import os
 from unittest.mock import patch
 from io import StringIO
@@ -15,36 +13,6 @@ from io import StringIO
 
 Rectangle = rectangle.Rectangle
 
-class TestRectangleDocs(unittest.TestCase):
-    """
-    Testing if docs are present and if the files are PEP valid
-    """
-
-    def test_rectangle_pep8_conformance(self):
-        """Test if rectangle conforms to pep8 style"""
-
-        pep_check = pep8.StyleGuide()
-        result = pep_check.check_files(["models/rectangle.py"])
-        self.assertEqual(result.total_errors, 0,
-                        "Found code style errors (and warnings).")
-
-    def test_module_docs(self):
-        """checks if module documentation is present"""
-
-        self.assertTrue(len(rectangle.__doc__) > 4)
-
-    def test_cls_docs(self):
-        """checks if class docs are present"""
-
-        self.assertTrue(len(Rectangle.__doc__) > 4)
-
-    def test_method_docs(self):
-        """checks if method documentation are present"""
-
-        methods = inspect.getmembers(Rectangle, inspect.isfunction)
-        for method in methods:
-            method = Rectangle.__name__ + '.' + method[0]
-            self.assertTrue(len(eval(method).__doc__) > 4)
 
 class TestRectangle(unittest.TestCase):
     """check that rectangles functionality"""

@@ -5,33 +5,9 @@ Test cases for base class
 from models import base
 import unittest
 import json
-import inspect
-import pep8
 Base = base.Base
 
 
-class TestBaseDocs(unittest.TestCase):
-    """
-    Testing if docs are present and if the files are PEP valid
-    """
-
-    def test_base_pep8_conformance(self):
-        pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(['models/base.py'])
-        self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
-
-    def test_module_docs(self):
-        self.assertTrue(len(base.__doc__) > 4)
-
-    def test_class_docs(self):
-        self.assertTrue(len(Base.__doc__) > 4)
-
-    def test_method_docs(self):
-        list_of_methods = inspect.getmembers(base.Base, inspect.isfunction)
-        for methods in list_of_methods:
-            method = Base.__name__ + '.' + methods[0]
-            self.assertTrue(len(eval(method).__doc__) > 4)
 
 class TestBaseId(unittest.TestCase):
     """Test for functionality of base classes"""

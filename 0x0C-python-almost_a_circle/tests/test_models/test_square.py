@@ -4,34 +4,8 @@
 """
 import unittest
 from models import square
-import inspect
-import pep8
 Square = square.Square
 
-
-class TestSquareDocs(unittest.TestCase):
-    """
-        TestRectangleDocs class
-    """
-
-    def test_base_pep8_conformance(self):
-        pep8style = pep8.StyleGuide(quiet=True)
-        result = pep8style.check_files(['models/square.py'])
-        self.assertEqual(result.total_errors, 0,
-                        "Found code style errors (and warnings).")
-
-    def test_module_docs(self):
-        self.assertTrue(len(square.__doc__) > 4)
-        
-    def test_class_docs(self):
-        self.assertTrue(len(Square.__doc__) > 4)
-
-    def test_method_docs(self):
-        list_of_methods = inspect.getmembers(square.Square,
-                                            inspect.isfunction)
-        for methods in list_of_methods:
-            method = Square.__name__ + '.' + methods[0]
-            self.assertTrue(len(eval(method).__doc__) > 4)
 
 class TestSquare(unittest.TestCase):
     """
