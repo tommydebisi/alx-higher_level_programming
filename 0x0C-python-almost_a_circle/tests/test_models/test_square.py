@@ -42,7 +42,7 @@ class TestSquare(unittest.TestCase):
         """ test for the square id """
         s1 = Square(2)
         s2 = Square(2, 3, 4, 5)
-        self.assertEqual(s1.id, 15)
+        self.assertEqual(s1.id, 17)
         self.assertEqual(s2.id, 5)
 
     def test_size_setter(self):
@@ -70,13 +70,13 @@ class TestSquare(unittest.TestCase):
         s6 = Square(100)
 
         self.assertEqual(str(s5), '[Square] (4) 1/3 - 3')
-        self.assertEqual(str(s6), '[Square] (16) 0/0 - 100')
+        self.assertEqual(str(s6), '[Square] (18) 0/0 - 100')
 
     def test_square_update(self):
         """ checks if the update method works well """
         s1 = Square(10)
 
-        self.assertEqual(str(s1), '[Square] (17) 0/0 - 10')
+        self.assertEqual(str(s1), '[Square] (19) 0/0 - 10')
         s1.update(5)
         self.assertEqual(str(s1), '[Square] (5) 0/0 - 10')
         s1.update(89, 100, 2, 3)
