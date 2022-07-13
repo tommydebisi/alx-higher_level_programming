@@ -5,8 +5,9 @@ Test cases for base class
 from models import base
 import unittest
 import json
+import inspect
+import pep8
 Base = base.Base
-
 
 
 class TestBaseId(unittest.TestCase):
