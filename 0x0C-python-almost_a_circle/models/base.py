@@ -6,6 +6,7 @@ import json as js
 import csv
 import turtle
 import random as rd
+import time
 
 
 class Base:
@@ -181,6 +182,8 @@ class Base:
         obj.pensize(5)
 
         # draw rectangles using turtle and clear screen
+        obj.write("Rectangle Instances", align='center')
+        time.sleep(1)
         for instance in list_rectangles:
             color_index = rd.randrange(0, col_len)
             obj.color(colors[color_index], colors[rd.randrange(0, col_len)])
@@ -190,11 +193,12 @@ class Base:
             obj.pendown()
 
             for i in range(2):
-                obj.forward(instance.height)
+                obj.forward(instance.height * 3)
                 obj.right(90)
-                obj.forward(instance.width)
+                obj.forward(instance.width * 3)
                 obj.right(90)
             obj.end_fill()
+            time.sleep(1)
             obj.clear()
 
         # draw squares using turtle and clear screen
@@ -207,12 +211,14 @@ class Base:
             obj.pendown()
 
             for i in range(4):
-                obj.forward(instance.size)
+                obj.forward(instance.size * 3)
                 obj.right(90)
 
             if index != len(list_squares) - 1:
                 obj.clear()
+                time.sleep(1)
             obj.end_fill()
+            time.sleep(1)
 
         # End the turtle GUI
         turtle.done()
