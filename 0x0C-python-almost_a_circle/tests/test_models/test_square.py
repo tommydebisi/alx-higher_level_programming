@@ -2,8 +2,6 @@
 from models import square
 import unittest
 import json
-import inspect
-import pep8
 import os
 from unittest.mock import patch
 from io import StringIO
