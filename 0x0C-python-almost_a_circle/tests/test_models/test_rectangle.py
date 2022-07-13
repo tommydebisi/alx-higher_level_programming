@@ -22,7 +22,7 @@ class TestRectangle(unittest.TestCase):
         cls.r2 = Rectangle(3, 1, 1)
         cls.r3 = Rectangle(6, 1, 1, 1)
         cls.r4 = Rectangle(9, 1, 1, 1, 10)
-    
+
     def test_object_id(self):
         """test object id"""
 
@@ -30,7 +30,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(self.r2.id, 13)
         self.assertEqual(self.r3.id, 14)
         self.assertEqual(self.r4.id, 10)
-    
+
     def test_width_getter(self):
         """Test width property"""
 
@@ -38,7 +38,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(self.r2.width, 3)
         self.assertEqual(self.r3.width, 6)
         self.assertEqual(self.r4.width, 9)
-    
+
     def test_width_setter(self):
         """Test width setter."""
 
@@ -68,6 +68,7 @@ class TestRectangle(unittest.TestCase):
             self.r2.width = -3
         with self.assertRaises(ValueError):
             Rectangle(-3, 4)
+
     def test_height_setter(self):
         """Test height setter."""
 
@@ -89,7 +90,6 @@ class TestRectangle(unittest.TestCase):
             self.r2.height = "13"
         with self.assertRaises(TypeError):
             rectangle(4, "world")
-
 
     def test_width_when_neg_num_passed(self):
         """test setter when negative number is passed"""
@@ -119,7 +119,6 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(TypeError):
             Rectangle(3, 5, None)
 
-
     def test_x_setter_when_type_wrong(self):
         """test setter when wrong type is passed"""
 
@@ -136,13 +135,11 @@ class TestRectangle(unittest.TestCase):
         with self.assertRaises(ValueError):
             Rectangle(3, 5, -10, -2)
 
-
     def test_y_setter(self):
         """Test y setter."""
 
         self.r1.y = 3
         self.assertEqual(self.r1.y, 3)
-
 
     def test_y_setter_when_none(self):
         """Test setter when none is passed"""
@@ -199,7 +196,7 @@ class TestRectangle(unittest.TestCase):
 
     def test_udate_method_using_kwargs(self):
         r = Rectangle(1, 1)
-        r.update(**{"id":4, "width":3, "height":2, "x":4, "y":4})
+        r.update(**{"id": 4, "width": 3, "height": 2, "x": 4, "y": 4})
         self.assertEqual(str(r), "[Rectangle] (4) 4/4 - 3/2")
 
     def test_update_too_many_args(self):
@@ -222,16 +219,18 @@ class TestRectangle(unittest.TestCase):
 
     def test_to_dictionary(self):
         r_1 = Rectangle(1, 1, id=3)
-        self.assertDictEqual(r_1.to_dictionary(), {"id": 3, "width": 1, "height": 1, "x": 0, "y": 0})
+        check_dic = {"id": 3, "width": 1, "height": 1, "x": 0, "y": 0}
+        self.assertDictEqual(r_1.to_dictionary(), check_dic)
         r_1 = Rectangle(1, 1, 3, 4, 6)
-        self.assertDictEqual(r_1.to_dictionary(), {"id": 6, "width": 1, "height": 1, "x": 3, "y": 4})
+        check_dic = {"id": 6, "width": 1, "height": 1, "x": 3, "y": 4}
+        self.assertDictEqual(r_1.to_dictionary(), check_dic)
         self.assertIs(type(r_1.to_dictionary()), dict)
 
     def test_save_to_file(self):
         r1 = Rectangle(1, 1, 1, 1, 1)
         r2 = Rectangle(2, 2, 2, 2, 2)
-        l = [r1, r2]
-        Rectangle.save_to_file(l)
+        li = [r1, r2]
+        Rectangle.save_to_file(li)
         with open("Rectangle.json", "r") as f:
             ls = [r1.to_dictionary(), r2.to_dictionary()]
             self.assertEqual(json.dumps(ls), f.read())
@@ -276,20 +275,18 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(nw_ls[0]), str(r_1))
         self.assertIsNot(nw_ls[0], ls[0])
 
-
     def test_basic_display(self):
-        
+
         r = Rectangle(2, 3, 0, 0, 1)
         expected_display = "##\n##\n##\n"
-        with patch('sys.stdout', new = StringIO()) as out:
+        with patch('sys.stdout', new=StringIO()) as out:
             r.display()
             self.assertEqual(out.getvalue(), expected_display)
-
 
     def test_display_xy(self):
         """Testing the display method with x and y"""
         r = Rectangle(2, 2, 2, 2, 1)
         expected_display = "\n\n  ##\n  ##\n"
-        with patch('sys.stdout', new = StringIO()) as out:
+        with patch('sys.stdout', new=StringIO()) as out:
             r.display()
             self.assertEqual(out.getvalue(), expected_display)

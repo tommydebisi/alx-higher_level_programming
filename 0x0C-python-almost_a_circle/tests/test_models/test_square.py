@@ -5,9 +5,8 @@ import json
 import os
 from unittest.mock import patch
 from io import StringIO
-
-
 Square = square.Square
+
 
 class TestSquare(unittest.TestCase):
     """check that Squares functionality"""
@@ -17,22 +16,21 @@ class TestSquare(unittest.TestCase):
         cls.s1 = Square(1)
         cls.s2 = Square(3, 1, 1)
         cls.s3 = Square(6, 1, 1, 1)
-        
-    
+
     def test_object_id(self):
         """test object id"""
 
         self.assertEqual(self.s1.id, 23)
         self.assertEqual(self.s2.id, 24)
         self.assertEqual(self.s3.id, 1)
-    
+
     def test_size_getter(self):
         """Test size property"""
 
         self.assertEqual(self.s1.size, 1)
         self.assertEqual(self.s2.size, 3)
         self.assertEqual(self.s3.size, 6)
-    
+
     def test_size_setter(self):
         """Test size setter."""
 
@@ -63,7 +61,6 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(ValueError):
             Square(-3, 4)
 
-
     def test_when_required_args_not_passed(self):
         with self.assertRaises(TypeError):
             Square()
@@ -82,7 +79,6 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(TypeError):
             Square(3, None)
 
-
     def test_x_setter_when_type_wrong(self):
         """test setter when wrong type is passed"""
 
@@ -99,13 +95,11 @@ class TestSquare(unittest.TestCase):
         with self.assertRaises(ValueError):
             Square(3, -10, -2)
 
-
     def test_y_setter(self):
         """Test y setter."""
 
         self.s1.y = 3
         self.assertEqual(self.s1.y, 3)
-
 
     def test_y_setter_when_none(self):
         """Test setter when none is passed"""
@@ -160,7 +154,7 @@ class TestSquare(unittest.TestCase):
 
     def test_udate_method_using_kwargs(self):
         r = Square(1, 1)
-        r.update(**{"id":4, "size":3, "x":4, "y":4})
+        r.update(**{"id": 4, "size": 3, "x": 4, "y": 4})
         self.assertEqual(str(r), '[Square] (4) 4/4 - 3')
 
     def test_update_too_many_args(self):
@@ -173,7 +167,7 @@ class TestSquare(unittest.TestCase):
         """test no args for update"""
         r = Square(1, 1, 0, 1)
         r.update()
-        self.assertEqual(str(r), '[Square] (1) 1/0 - 1' )
+        self.assertEqual(str(r), '[Square] (1) 1/0 - 1')
 
     def test_mix_args_kwargs(self):
         """tests output for mixed args and kwargs"""
@@ -183,16 +177,18 @@ class TestSquare(unittest.TestCase):
 
     def test_to_dictionary(self):
         r_1 = Square(1, 1, id=3)
-        self.assertDictEqual(r_1.to_dictionary(), {"id": 3, "size": 1, "x": 1, "y": 0})
+        check_dic = {"id": 3, "size": 1, "x": 1, "y": 0}
+        self.assertDictEqual(r_1.to_dictionary(), check_dic)
         r_1 = Square(1, 1, 3, 6)
-        self.assertDictEqual(r_1.to_dictionary(), {'id': 6, 'size': 1, 'x': 1, 'y': 3})
+        check_dic = {'id': 6, 'size': 1, 'x': 1, 'y': 3}
+        self.assertDictEqual(r_1.to_dictionary(), check_dic)
         self.assertIs(type(r_1.to_dictionary()), dict)
 
     def test_save_to_file(self):
         s1 = Square(1, 1, 1, 1)
         s2 = Square(2, 2, 2, 2)
-        l = [s1, s2]
-        Square.save_to_file(l)
+        li = [s1, s2]
+        Square.save_to_file(li)
         with open("Square.json", "r") as f:
             ls = [s1.to_dictionary(), s2.to_dictionary()]
             self.assertEqual(json.dumps(ls), f.read())
@@ -237,20 +233,17 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(str(nw_ls[0]), str(r_1))
         self.assertIsNot(nw_ls[0], ls[0])
 
-
     def test_basic_display(self):
-        
         r = Square(2)
         expected_display = "##\n##\n"
-        with patch('sys.stdout', new = StringIO()) as out:
+        with patch('sys.stdout', new=StringIO()) as out:
             r.display()
             self.assertEqual(out.getvalue(), expected_display)
-
 
     def test_display_xy(self):
         """Testing the display method with x and y"""
         r = Square(2, 2, 2, 2)
         expected_display = "\n\n  ##\n  ##\n"
-        with patch('sys.stdout', new = StringIO()) as out:
+        with patch('sys.stdout', new=StringIO()) as out:
             r.display()
             self.assertEqual(out.getvalue(), expected_display)
