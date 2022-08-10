@@ -1,7 +1,7 @@
 -- This script lists all shows contained in the database hbtn_0d_tvshows.
 
 -- Modifying a column by adding constraint
-ALTER TABLE tv_show_genres MODIFY genre_id INT DEFAULT NULL;
+ALTER TABLE tv_show_genres MODIFY tv_show_genres.genre_id INT DEFAULT NULL;
 
 -- Inserting show titles into tv_shows
 INSERT INTO tv_shows(title) VALUES('Better Call Saul');
