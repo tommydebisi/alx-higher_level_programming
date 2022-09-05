@@ -4,26 +4,18 @@
   integer in the list of arguments
 */
 
-const newArr = process.argv;
+// remove args 0 and 1
+const newArr = process.argv.slice(2);
 
-if (newArr.length === 2) {
-  console.log(0);
-} else if (newArr.length === 3) {
-  console.log(0);
-} else {
-  let max = parseInt(newArr[2]);
-  let secondMax;
+const integers = newArr.filter(arg => !isNaN(arg));
+const numbers = integers.map(arg => parseInt(arg)); // convert args to int
 
-  for (let index = 3; index < newArr.length; index++) {
-    const argValue = parseInt(newArr[index]);
+let largest = 0;
+if (numbers.length > 1) {
+  biggest = Math.max(...numbers); // get max value
 
-    if (argValue && argValue > max) {
-      secondMax = max;
-      max = argValue;
-    } else if (argValue > secondMax) {
-      secondMax = argValue;
-    }
-  }
-
-  console.log(secondMax);
+  numbers.splice(numbers.indexOf(biggest), 1);
+  biggest = Math.max(...numbers);
 }
+
+console.log(biggest);
