@@ -12,14 +12,18 @@ if (newArr.length === 2) {
   console.log(0);
 } else {
   let max = newArr[2];
+  let secondMax;
 
   for (let index = 3; index < newArr.length; index++) {
     const argValue = parseInt(newArr[index]);
 
     if (argValue && argValue > max) {
+      secondMax = max;
       max = argValue;
+    } else if (argValue > secondMax) {
+      secondMax = argValue;
     }
   }
 
-  console.log(max);
+  console.log(secondMax);
 }
