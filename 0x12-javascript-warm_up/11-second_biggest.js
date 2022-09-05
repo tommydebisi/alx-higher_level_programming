@@ -11,7 +11,7 @@ if (newArr.length === 2) {
 } else if (newArr.length === 3) {
   console.log(0);
 } else {
-  let max = newArr[2];
+  let max = parseInt(newArr[2]);
   let secondMax;
 
   for (let index = 3; index < newArr.length; index++) {
