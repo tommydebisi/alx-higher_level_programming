@@ -1,25 +1,34 @@
 #!/usr/bin/python3
 """
-    script that takes in an argument and displays all values in the
-    states table of hbtn_0e_0_usa where name matches the argument.
+Lists all states with a name starting with N (upper N)
 """
+import sys
 import MySQLdb
-from sys import argv
+
+host = "localhost"
+port = 3306
 
 if __name__ == "__main__":
-    args = argv[1:]
+    if len(sys.argv) != 5:
+        print("USAGE: ./0-select_states.py user passwd database search_string")
+        sys.exit(1)
 
-    db_obj = MySQLdb.connect(user=args[0], passwd=args[1], db=args[2],
-                             host="localhost", port=3306)
+    user, passwd, db, term = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4]
 
-    cur_obj = db_obj.cursor()
-    cur_obj.execute("SELECT * FROM states \
-                    WHERE states.name='{}' \
-                    ORDER BY states.id ASC".format(args[3]))
+    db = MySQLdb.connect(host=host, user=user, passwd=passwd, db=db)
+    cur = db.cursor()
 
-    rows = cur_obj.fetchall()
+    query = """
+    SELECT * FROM states
+    WHERE CONVERT(`name` USING Latin1)
+    COLLATE Latin1_General_CS
+    = '{}';
+    """.format(term)
+
+    cur.execute(query)
+    rows = cur.fetchall()
     for row in rows:
         print(row)
 
-    cur_obj.close()
-    db_obj.close()
+    cur.close()
+    db.close()
