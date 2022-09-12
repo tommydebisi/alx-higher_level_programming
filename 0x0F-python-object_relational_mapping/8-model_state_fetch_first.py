@@ -25,6 +25,6 @@ if __name__ == "__main__":
     if info := session.query(State).order_by(State.id).first():
         print("{}: {}".format(info.id, info.name))
     else:
-        print()
+        print('Nothing')
 
     session.commit()
