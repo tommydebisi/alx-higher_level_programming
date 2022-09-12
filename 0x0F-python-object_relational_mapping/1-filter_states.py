@@ -6,19 +6,25 @@
 import MySQLdb
 from sys import argv
 
-if __name__ == "__main__":
-    db_obj = MySQLdb.connect(host="localhost", port=3306, user=argv[1],
-                             passwd=argv[2], db=argv[3])
 
-    cur_obj = db_obj.cursor()
-    cur_obj.execute("SELECT * FROM states \
-                    WHERE states.name LIKE 'N%' \
-                    ORDER BY states.id ASC")
+def main():
+    """Main function"""
+    username = argv[1]
+    password = argv[2]
+    database = argv[3]
 
-    rows = cur_obj.fetchall()
-
-    for row in rows:
+    db = MySQLdb.connect(host="localhost", port=3306, user=username,
+                         password=password, db=database)
+    cur = db.cursor()
+    cur.execute("""SELECT * FROM states WHERE name LIKE
+                BINARY 'N%' ORDER BY id""")
+    result = cur.fetchall()
+    for row in result:
         print(row)
 
     cur_obj.close()
     db_obj.close()
+
+
+if __name__ == '__main__':
+    main()
