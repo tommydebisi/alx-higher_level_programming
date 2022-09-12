@@ -1,30 +1,32 @@
 #!/usr/bin/python3
 """
-    script that lists all states with a name starting with N
-    (upper N) from the database hbtn_0e_0_usa
+Lists all states with a name starting with N (upper N)
 """
+import sys
 import MySQLdb
-from sys import argv
 
+host = "localhost"
+port = 3306
 
-def main():
-    """Main function"""
-    username = argv[1]
-    password = argv[2]
-    database = argv[3]
+if __name__ == "__main__":
+    if len(sys.argv) != 4:
+        print("USAGE: ./0-select_states.py user passwd database")
+        sys.exit(1)
 
-    db = MySQLdb.connect(host="localhost", port=3306, user=username,
-                         password=password, db=database)
+    user, passwd, db = sys.argv[1], sys.argv[2], sys.argv[3]
+
+    db = MySQLdb.connect(host=host, user=user, passwd=passwd, db=db)
     cur = db.cursor()
-    cur.execute("""SELECT * FROM states WHERE name LIKE
-                BINARY 'N%' ORDER BY id""")
-    result = cur.fetchall()
-    for row in result:
+    query = """
+    SELECT * FROM states
+    WHERE CONVERT(`name` USING Latin1)
+    COLLATE Latin1_General_CS
+    LIKE 'N%';
+    """
+    cur.execute(query)
+    rows = cur.fetchall()
+    for row in rows:
         print(row)
 
-    cur_obj.close()
-    db_obj.close()
-
-
-if __name__ == '__main__':
-    main()
+    cur.close()
+    db.close()
