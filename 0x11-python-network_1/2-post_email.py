@@ -7,12 +7,13 @@
 import urllib
 import sys
 
-new_dict = {'email': sys.argv[2]}
-parsed = urllib.parse.urlencode(new_dict)
+if __name__ == "__main__":
+    new_dict = {'email': sys.argv[2]}
+    parsed = urllib.parse.urlencode(new_dict)
 
-# POST data should be in bytes
-parsed = parsed.encode('ascii')
+    # POST data should be in bytes
+    parsed = parsed.encode('ascii')
 
-request = urllib.request.Request(sys.argv[1], parsed)
-with urllib.request.urlopen(request) as response:
-    print(response.read().decode('utf-8'))
+    request = urllib.request.Request(sys.argv[1], parsed)
+    with urllib.request.urlopen(request) as response:
+        print(response.read().decode('utf-8'))
