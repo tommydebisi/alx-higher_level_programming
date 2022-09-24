@@ -7,12 +7,11 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-    if len(argv) == 1:
-        post_dic = {'q': ""}
-    else:
-        post_dic = {'q': argv[1]}
+    st = argv[1] if len(argv) > 1 else ""
+    post_dic = {'q': st}
 
     r = requests.post("http://0.0.0.0:5000/search_user", data=post_dic)
+
     try:
         dic_val = r.json()
         if dic_val:
