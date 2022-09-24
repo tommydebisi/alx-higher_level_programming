@@ -9,11 +9,8 @@ import sys
 
 if __name__ == "__main__":
     new_dict = {'email': sys.argv[2]}
-    parsed = urllib.parse.urlencode(new_dict)
-
-    # POST data should be in bytes
-    parsed = parsed.encode("ascii")
+    parsed = urllib.parse.urlencode(new_dict).encode("ascii")
 
     request = urllib.request.Request(sys.argv[1], parsed)
     with urllib.request.urlopen(request) as response:
-        print(response.read().decode("utf8"))
+        print(response.read().decode("UTF-8"))
