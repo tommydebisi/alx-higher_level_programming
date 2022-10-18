@@ -8,5 +8,5 @@ const options = {
 };
 
 request(options, (err, res, body) => {
-  console.log(res.statusCode);
+  console.log(`code: ${res.statusCode}`);
 });
