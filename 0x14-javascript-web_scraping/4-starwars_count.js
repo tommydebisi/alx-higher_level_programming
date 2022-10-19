@@ -13,7 +13,7 @@ request(url, (err, res, body) => {
   let count = 0;
   for (const film in films) {
     for (const character in films[film].characters) {
-      if (character.includes('18')) {
+      if (films[film].characters[character].includes('18')) {
         count++;
       }
     }
