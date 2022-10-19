@@ -11,9 +11,9 @@ request(url, (err, res, body) => {
   }
   const films = JSON.parse(body).results;
   let count = 0;
-  for (const film in films) {
-    for (const character in films[film].characters) {
-      if (films[film].characters[character].includes('18')) {
+  for (const film of films) {
+    for (const character of film.characters) {
+      if (character.includes('18')) {
         count++;
       }
     }
