@@ -11,17 +11,15 @@ request(url, 'utf-8', (err, res, body) => {
 
   const todos = JSON.parse(body);
   const newObj = {};
-  let uId = todos[0].userId;
-  newObj[uId] = 0;
 
+  // care less about sorting
   for (const todo of todos) {
-    if (uId !== todo.userId) {
-      newObj[todo.userId] = 0;
-      uId = todo.userId;
-    }
-
-    if (todo.completed === true) {
-      newObj[todo.userId] += 1;
+    if (todo.completed) {
+      if (newObj[todo.userId]) {
+        newObj[todo.userId] += 1;
+      } else {
+        newObj[todo.userId] = 1;
+      }
     }
   }
   console.log(newObj);
